@@ -322,11 +322,11 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.02);
         }
 
-        /* --- Status & Working Badges --- */
+        /* --- Status Badges --- */
         .status-badge {
             position: absolute;
-            top: 15px;
-            right: 15px;
+            top: 20px;
+            right: 20px;
             background: rgba(254, 243, 199, 0.9);
             color: #D97706;
             padding: 6px 14px;
@@ -354,6 +354,18 @@
         @keyframes blink {
             0%, 100% { opacity: 0.4; }
             50% { opacity: 1; }
+        }
+
+        /* Green Completed Badge Variants */
+        .status-badge.complete-badge {
+            background: rgba(209, 250, 229, 0.9);
+            color: #059669;
+            border: 1px solid rgba(5, 150, 105, 0.2);
+        }
+
+        .status-dot.complete-dot {
+            background-color: #059669;
+            animation: none;
         }
 
         /* --- Circular Profile Container --- */
@@ -814,7 +826,7 @@
             color: var(--text-muted);
         }
 
-        document.getElementById('modal-skills') {
+        ul.skills-list {
             list-style: none;
             display: flex;
             flex-wrap: wrap;
@@ -961,27 +973,28 @@
                 <div class="status-badge">
                     <span class="status-dot"></span>Working on it
                 </div>
-                <div class="img-wrapper modal-trigger" data-id="airlines_project">
-                    <img src="images/architecture.jpg" alt="Aviation Real-Time Data Migration Pipeline" class="contain-img">
-                </div>
-                <div class="card-info">
+                <div class="card-info" style="padding-top: 40px;">
                     <h3>Real-Time Aviation Data Migration Pipeline</h3>
                     <p class="meta">Azure Data Factory • Azure Databricks SQL • Azure Synapse</p>
+                    <p style="margin-bottom: 20px;">A cloud migration pipeline optimized for direct streaming execution. Pulls live JSON sky tracking arrays through Azure Data Factory and processes operations directly in-flight via Serverless SQL Warehouses.</p>
                     <a href="#" class="view-project-link modal-trigger-link" data-id="airlines_project">
-                        View Architecture Details <i class="fa-solid fa-arrow-right"></i>
+                       View Project <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
             
             <div class="project-card">
-                <div class="img-wrapper modal-trigger" data-id="datawarehouse">
+                <div class="status-badge complete-badge">
+                    <span class="status-dot complete-dot"></span>Completed
+                </div>
+                <div class="img-wrapper modal-trigger" data-id="datawarehouse" style="margin-top: 35px;">
                     <img src="images/architecture.jpg" alt="Data Warehouse Architecture" class="contain-img">
                 </div>
                 <div class="card-info">
                     <h3>End-to-End Data Warehousing</h3>
                     <p class="meta">Medallion Architecture • T-SQL</p>
                     <a href="https://github.com/bhupalreddythandlam/sql-datawarehouse-project.git" target="_blank" class="view-project-link">
-                        View Project <i class="fa-solid fa-arrow-right"></i>
+                       View Project <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
@@ -1182,7 +1195,7 @@
                     img: 'images/architecture.jpg',
                     desc: `<p>Currently designing and developing a serverless cloud infrastructure stack optimized for direct memory processing without traditional 3-tier staging layers.</p>
                            <p>🚀 <b>The Orchestration:</b> Built a pipeline inside <b>Azure Data Factory</b> using a Copy Activity connected via REST endpoints to query a live international flight API system.</p>
-                           <p>💧 <b>The Landing Strip:</b> Dropped point-in-time semi-structured raw payloads straight into an <b>Azure Data Lake Storage Gen2</b> container with a optimized Hierarchical Namespace.</p>
+                           <p>💧 <b>The Landing Strip:</b> Dropped point-in-time semi-structured raw payloads straight into an <b>Azure Data Lake Storage Gen2</b> container with an optimized Hierarchical Namespace.</p>
                            <p>⚡ <b>The Compute Engine:</b> Provisioning an <b>Azure Databricks</b> Serverless SQL Warehouse to run direct, zero-Python transformations using SQL CTEs to explode arrays and flatten text fields in memory.</p>
                            <p>🏛️ <b>The Target Warehouse:</b> Streaming clean structures straight into a Dedicated SQL Pool inside <b>Azure Synapse Analytics</b> organized using a fast Round-Robin distribution model.</p>`,
                     skills: ['Azure Data Factory', 'Azure Databricks SQL', 'Azure Synapse Analytics', 'ADLS Gen2', 'In-Flight ETL']
