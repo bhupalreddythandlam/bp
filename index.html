@@ -978,7 +978,7 @@
                     <p class="meta">Azure Data Factory • Azure Databricks SQL • Azure Synapse</p>
                     <p style="margin-bottom: 20px;">A cloud migration pipeline optimized for direct streaming execution. Pulls live JSON sky tracking arrays through Azure Data Factory and processes operations directly in-flight via Serverless SQL Warehouses.</p>
                     <a href="#" class="view-project-link modal-trigger-link" data-id="airlines_project">
-                       View Project <i class="fa-solid fa-arrow-right"></i>
+                        View Architecture Details <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
@@ -994,7 +994,7 @@
                     <h3>End-to-End Data Warehousing</h3>
                     <p class="meta">Medallion Architecture • T-SQL</p>
                     <a href="https://github.com/bhupalreddythandlam/sql-datawarehouse-project.git" target="_blank" class="view-project-link">
-                       View Project <i class="fa-solid fa-arrow-right"></i>
+                        View Architecture Details <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
@@ -1192,7 +1192,6 @@
                 'airlines_project': {
                     title: 'Real-Time Aviation Data Migration & In-Flight ETL Pipeline',
                     issuer: 'Microsoft Azure Data Architecture | Active Development',
-                    img: 'images/architecture.jpg',
                     desc: `<p>Currently designing and developing a serverless cloud infrastructure stack optimized for direct memory processing without traditional 3-tier staging layers.</p>
                            <p>🚀 <b>The Orchestration:</b> Built a pipeline inside <b>Azure Data Factory</b> using a Copy Activity connected via REST endpoints to query a live international flight API system.</p>
                            <p>💧 <b>The Landing Strip:</b> Dropped point-in-time semi-structured raw payloads straight into an <b>Azure Data Lake Storage Gen2</b> container with an optimized Hierarchical Namespace.</p>
@@ -1223,7 +1222,7 @@
                     title: 'Associate Data Engineer in SQL',
                     issuer: 'DataCamp | April 09, 2026',
                     img: 'images/datacamp-cert.jpg',
-                    desc: '<p>Completed 28 hours of intensive coursework covering core data engineering concepts. Gained practical experience in writing advanced SQL across different dialects (PostgreSQL, SQL Server), designing data warehousing structures, and establishing reliable ETL pipelines.</p>',
+                    desc: '<p>Completed 28 hours of intensive coursework covering core data engineering concepts Gained practical experience in writing advanced SQL across different dialects (PostgreSQL, SQL Server), designing data warehousing structures, and establishing reliable ETL pipelines.</p>',
                     skills: ['Data Engineering', 'Advanced SQL', 'Data Warehousing', 'ETL Pipelines']
                 },
                 'tata': {
@@ -1244,7 +1243,7 @@
                     title: 'Python Essentials 1',
                     issuer: 'Cisco Networking Academy | Dec 24, 2025',
                     img: 'images/cisco-cert.jpg',
-                    desc: '<p>Earned a verified credential demonstrating foundational programming logic and syntax. Demonstrated the ability to design, develop, and effectively debug computer programs utilizing Python 3 and the comprehensive Python Standard Library.</p>',
+                    desc: '<p>Earned a verified credential demonstrating foundational programming logic and syntax Demonstrated the ability to design, develop, and effectively debug computer programs utilizing Python 3 and the comprehensive Python Standard Library.</p>',
                     skills: ['Python 3', 'Debugging', 'Algorithmic Thinking', 'Standard Library']
                 },
                 'deloitte': {
@@ -1273,7 +1272,19 @@
                     const data = itemData[itemId];
 
                     if (data) {
-                        modalImg.src = data.img;
+                        const modalLeft = document.querySelector('.modal-left');
+                        const modalRight = document.querySelector('.modal-right');
+
+                        // Dynamically adjust split panels for text-only cards
+                        if (itemId === 'airlines_project') {
+                            modalLeft.style.display = 'none'; 
+                            modalRight.style.flex = '1';      
+                        } else {
+                            modalLeft.style.display = 'flex'; 
+                            modalRight.style.flex = '0.9';    
+                            modalImg.src = data.img;
+                        }
+
                         modalTitle.textContent = data.title;
                         modalIssuer.textContent = data.issuer;
                         modalDesc.innerHTML = data.desc; 
